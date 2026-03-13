@@ -9,6 +9,7 @@ export default defineConfig({
   },
   preview: {
     port: 8080,
-  }
+  },
+  assetsInclude: ['**/*.gltf', '**/*.bin'],
 });
 

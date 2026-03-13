@@ -16,13 +16,13 @@ export async function loadCanModel(options: LoadCanOptions = {}): Promise<Group>
  
   const group = new Group();
  
-  const texturePath = new URL(`../soda_can/2 Different Textures/Soda_Texture_${textureIndex}.png`, import.meta.url).toString();
+  const texturePath = `/soda_can/textures/Soda_Texture_${textureIndex}.png`;
   const texture = await new TextureLoader().loadAsync(texturePath);
   texture.colorSpace = SRGBColorSpace;
   texture.flipY = false; // needed for GLTF UV convention
  
   // Load the new GLTF model (expects result.bin next to it)
-  const gltfPath = new URL('../soda_can/result.gltf', import.meta.url).toString();
+  const gltfPath = `/soda_can/result.gltf`;
   const gltf = await new GLTFLoader().loadAsync(gltfPath);
   const root = gltf.scene as Group;
  

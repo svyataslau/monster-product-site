@@ -9,10 +9,33 @@
   </head>
   <body>
     <header class="site-header" role="banner">
-      <div class="header-outer glass">
+      <div class="header-outer">
         <div class="container header-inner">
           <div class="brand">
-            <span class="brand-mark">▲</span>
+            <svg class="brand-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36" aria-hidden="true">
+              <defs>
+                <linearGradient id="lg-top" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#6ef3ff"/>
+                  <stop offset="100%" stop-color="#b9a7ff"/>
+                </linearGradient>
+                <linearGradient id="lg-right" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#b9a7ff"/>
+                  <stop offset="100%" stop-color="#7c5fcc"/>
+                </linearGradient>
+                <linearGradient id="lg-left" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#9d7fe8"/>
+                  <stop offset="100%" stop-color="#ff84e8"/>
+                </linearGradient>
+              </defs>
+              <polygon points="18,4 29,10.5 18,17 7,10.5" fill="url(#lg-top)"/>
+              <polygon points="29,10.5 29,23.5 18,30 18,17" fill="url(#lg-right)"/>
+              <polygon points="7,10.5 18,17 18,30 7,23.5" fill="url(#lg-left)"/>
+              <polyline points="18,4 29,10.5 29,23.5 18,30 7,23.5 7,10.5 18,4" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.7"/>
+              <line x1="18" y1="4" x2="18" y2="17" stroke="rgba(255,255,255,0.25)" stroke-width="0.7"/>
+              <line x1="7" y1="10.5" x2="18" y2="17" stroke="rgba(255,255,255,0.25)" stroke-width="0.7"/>
+              <line x1="29" y1="10.5" x2="18" y2="17" stroke="rgba(255,255,255,0.25)" stroke-width="0.7"/>
+              <line x1="18" y1="17" x2="18" y2="30" stroke="rgba(255,255,255,0.25)" stroke-width="0.7"/>
+            </svg>
             <span class="brand-name">Three.js Courses</span>
           </div>
           <nav class="nav" aria-label="Primary navigation">
@@ -23,10 +46,11 @@
               <li><a href="#about" class="nav-link" data-nav>About</a></li>
             </ul>
           </nav>
-          <a href="#cta" class="btn btn-primary">Enroll now</a>
         </div>
       </div>
     </header>
+
+    <a href="#cta" class="btn btn-primary enroll-fixed">Enroll now</a>
 
     <main class="site-main">
       <section class="hero section" id="hero">
@@ -206,7 +230,7 @@
               <h3>Pro</h3>
               <p class="price">$149</p>
               <p>All courses + Source files</p>
-              <a href="#" class="btn btn-primary">Choose plan</a>
+              <a href="#" class="btn btn-secondary">Choose plan</a>
             </article>
             <article class="pricing-card glass">
               <h3>Team</h3>
@@ -343,45 +367,7 @@
         </div>
       </section>
 
-      <section class="contact section under-canvas" id="contact">
-        <div class="container">
-          <h2 class="section-title">Contact</h2>
-          <div class="features-grid">
-            <article class="feature glass">
-              <h3 class="feature-title">Support</h3>
-              <p class="feature-text">Email us for help with your account.</p>
-            </article>
-            <article class="feature glass">
-              <h3 class="feature-title">Partnerships</h3>
-              <p class="feature-text">We collaborate with studios and tools vendors.</p>
-            </article>
-            <article class="feature glass">
-              <h3 class="feature-title">Teams</h3>
-              <p class="feature-text">Looking for seats and private sessions? Let’s talk.</p>
-            </article>
-          </div>
-        </div>
-      </section>
     </main>
-
-    <footer class="site-footer" role="contentinfo">
-      <div class="footer-outer glass">
-        <div class="container footer-inner">
-          <div class="footer-left">
-            <span class="brand-mark">▲</span>
-            <span class="brand-name">Three.js Courses</span>
-          </div>
-          <nav class="footer-right" aria-label="Footer navigation">
-            <ul class="nav-list">
-              <li><a href="#hero" class="nav-link" data-nav>Top</a></li>
-              <li><a href="#courses" class="nav-link" data-nav>Courses</a></li>
-              <li><a href="#about" class="nav-link" data-nav>About</a></li>
-              <li><a href="#contact" class="nav-link" data-nav>Contact</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </footer>
 
     <nav class="side-nav glass" aria-label="Section navigation">
       <ul class="side-nav-list">
@@ -400,7 +386,6 @@
         <li><a href="#partners" class="nav-link" data-nav>Partners</a></li>
         <li><a href="#cases" class="nav-link" data-nav>Cases</a></li>
         <li><a href="#newsletter" class="nav-link" data-nav>Newsletter</a></li>
-        <li><a href="#contact" class="nav-link" data-nav>Contact</a></li>
       </ul>
     </nav>
 

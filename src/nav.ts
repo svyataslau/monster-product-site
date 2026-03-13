@@ -1,4 +1,13 @@
 const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-nav]'));
+
+document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    const href = link.getAttribute('href') || '';
+    if (href === '#') return;
+    e.preventDefault();
+    document.querySelector<HTMLElement>(href)?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
 const sections = links
   .map((a) => document.querySelector<HTMLElement>(a.getAttribute('href') || ''))
   .filter((el): el is HTMLElement => !!el);
@@ -8,19 +17,21 @@ const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       const id = '#' + entry.target.id;
-      const link = links.find((l) => l.getAttribute('href') === id);
-      if (!link) return;
+      const matched = links.filter((l) => l.getAttribute('href') === id);
+      if (!matched.length) return;
       if (entry.isIntersecting) {
         links.forEach((l) => {
           l.removeAttribute('data-active');
           l.removeAttribute('aria-current');
         });
-        link.setAttribute('data-active', 'true');
-        link.setAttribute('aria-current', 'true');
+        matched.forEach((l) => {
+          l.setAttribute('data-active', 'true');
+          l.setAttribute('aria-current', 'true');
+        });
       }
     });
   },
-  { rootMargin: '-30% 0px -60% 0px', threshold: 0.01 }
+  { rootMargin: '-10% 0px -10% 0px', threshold: 0.01 }
 );
 
 sections.forEach((s) => observer.observe(s));
