@@ -1,5 +1,9 @@
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
+  --accent: linear-gradient(135deg, #2b4fff 0%, #4169e1 60%, #6385f5 100%);
+  --accent-shadow: rgba(65, 105, 225, 0.3);
+  --text: #0f0f0f;
+  --text-muted: rgba(15, 15, 15, 0.6);
 }
 
 *,
@@ -20,8 +24,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: Futura, Future, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   font-size: 17px;
-  background: radial-gradient(1200px 600px at 50% 20%, #1f2433 0%, #121522 55%, #0c0f1a 100%);
-  background-attachment: fixed;
+  background: #fff;
+  color: var(--text);
 }
 
 html {
@@ -33,10 +37,8 @@ canvas {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 1; /* may render above some sections marked as under-canvas */
+  z-index: 1;
 }
-
-/* hint and scroll spacer removed */
 
 /* ------------------------------
    Layout and UI overlay
@@ -49,11 +51,14 @@ canvas {
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.06);
-  /*border: 1px solid rgba(255, 255, 255, 0.08);*/
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.07);
+}
+
+.card-border {
+  border: 1px solid rgba(0, 0, 0, 0.07);
 }
 
 .site-header {
@@ -86,7 +91,7 @@ canvas {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: #fff;
+  color: var(--text);
   letter-spacing: 0.2px;
 }
 
@@ -112,13 +117,13 @@ canvas {
 }
 
 .nav-link {
-  color: rgba(255, 255, 255, 0.84);
+  color: var(--text-muted);
   text-decoration: none;
   font-size: 16px;
 }
 
 .nav-link:hover {
-  color: #fff;
+  color: var(--text);
 }
 
 .btn {
@@ -128,7 +133,7 @@ canvas {
   text-align: center;
   font-size: 16px;
   letter-spacing: 0.2px;
-  transition: transform 0.12s ease, background-color 0.12s ease, box-shadow 0.12s ease;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 
 .btn:hover {
@@ -140,18 +145,18 @@ canvas {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #6ef3ff 0%, #b9a7ff 50%, #ff84e8 100%);
-  color: #0b0e16;
+  background: var(--accent);
+  color: #fff;
   font-weight: 700;
   border-radius: 9999px;
-  box-shadow: 0 6px 24px rgba(185, 167, 255, 0.35);
+  box-shadow: 0 6px 24px var(--accent-shadow);
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text);
   border-radius: 9999px;
-  /*border: 1px solid rgba(255, 255, 255, 0.12);*/
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .btn-lg {
@@ -165,7 +170,7 @@ canvas {
 
 .section {
   position: relative;
-  z-index: 2; /* default: content above canvas */
+  z-index: 2;
   min-height: 100vh;
   display: grid;
   align-items: center;
@@ -173,7 +178,7 @@ canvas {
 }
 
 .under-canvas {
-  z-index: 0; /* allow canvas (z-index:1) to appear above this section */
+  z-index: 0;
 }
 
 .hero {
@@ -188,7 +193,7 @@ canvas {
 
 .hero-copy {
   padding: 28px;
-  color: #fff;
+  color: var(--text);
 }
 
 .hero-title {
@@ -196,14 +201,13 @@ canvas {
   font-size: clamp(36px, 7vw, 72px);
   line-height: 1.05;
   letter-spacing: 0.2px;
-  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
 }
 
 .hero-subtitle {
   margin: 0 0 18px;
   font-size: 20px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-muted);
 }
 
 .hero-actions {
@@ -217,7 +221,7 @@ canvas {
   gap: 12px;
   flex-wrap: wrap;
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--text-muted);
 }
 
 .features {
@@ -232,7 +236,7 @@ canvas {
 
 .feature {
   padding: 24px;
-  color: #fff;
+  color: var(--text);
 }
 
 .feature-title {
@@ -244,7 +248,7 @@ canvas {
   margin: 0;
   font-size: 16px;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-muted);
 }
 
 .courses {
@@ -253,7 +257,7 @@ canvas {
 
 .section-title {
   margin: 0 0 12px;
-  color: #fff;
+  color: var(--text);
   font-size: 32px;
 }
 
@@ -267,7 +271,7 @@ canvas {
   display: grid;
   gap: 14px;
   padding: 24px;
-  color: #fff;
+  color: var(--text);
 }
 
 .course-title {
@@ -278,7 +282,7 @@ canvas {
 .course-text {
   margin: 0 0 4px;
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-muted);
 }
 
 .curriculum {
@@ -297,7 +301,7 @@ canvas {
 
 .testimonial-card {
   padding: 24px;
-  color: #fff;
+  color: var(--text);
 }
 
 .testimonial-card blockquote {
@@ -308,7 +312,7 @@ canvas {
 
 .testimonial-card figcaption {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-muted);
 }
 
 .instructors {
@@ -323,7 +327,7 @@ canvas {
 
 .instructor-card {
   padding: 24px;
-  color: #fff;
+  color: var(--text);
 }
 
 .pricing {
@@ -338,7 +342,7 @@ canvas {
 
 .pricing-card {
   padding: 24px;
-  color: #fff;
+  color: var(--text);
   display: grid;
   gap: 8px;
   align-content: start;
@@ -362,7 +366,7 @@ canvas {
 
 .faq-item {
   padding: 18px 20px;
-  color: #fff;
+  color: var(--text);
   cursor: pointer;
 }
 
@@ -381,7 +385,7 @@ canvas {
   display: grid;
   gap: 14px;
   padding: 28px;
-  color: #fff;
+  color: var(--text);
   text-align: center;
 }
 
@@ -392,7 +396,7 @@ canvas {
 
 .cta-text {
   margin: 0 0 6px;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-muted);
 }
 
 .about {
@@ -407,7 +411,7 @@ canvas {
 
 .about-block {
   padding: 24px;
-  color: #fff;
+  color: var(--text);
 }
 
 .site-footer {
@@ -422,8 +426,8 @@ canvas {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 0; /* horizontal padding handled by .container */
-  color: rgba(255, 255, 255, 0.92);
+  padding: 12px 0;
+  color: var(--text-muted);
 }
 
 .footer-right {
@@ -459,14 +463,15 @@ canvas {
   width: 100%;
   padding: 6px 10px;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--text-muted);
   text-decoration: none;
 }
 
 .side-nav .nav-link[data-active="true"] {
-  background: linear-gradient(135deg, #6ef3ff 0%, #b9a7ff 50%, #ff84e8 100%);
-  color: #0b0e16;
-  box-shadow: 0 6px 24px rgba(185, 167, 255, 0.35);
+  background: var(--accent);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px var(--accent-shadow);
 }
 
 /* Reveal on scroll */
@@ -497,4 +502,3 @@ canvas {
     display: flex;
   }
 }
-
