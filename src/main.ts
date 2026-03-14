@@ -1,4 +1,3 @@
-import { Group, Vector3 } from 'three';
 import { createScene } from './scene';
 import { loadCanModel } from './can';
 import { createScrollProgress } from './input/scroll';
@@ -16,21 +15,30 @@ const scroll = createScrollProgress();
 attachResizeHandler(renderer, camera);
 
 // Can groups and their initial rotations (used as baselines for animation)
-let can1: Group | null = null;
+let can1: any = null;
 let can1BaseRotation: { x: number; y: number } = { x: 0, y: 0 };
-let can2: Group | null = null;
+let can2: any = null;
 let can2BaseRotation: { x: number; y: number } = { x: 0, y: 0 };
 
 // Load both can variants with different textures
-loadCanModel({ textureIndex: 0 }).then((g) => {
-  can1 = g;
-  can1BaseRotation = { x: g.rotation.x, y: g.rotation.y };
-  scene.add(g);
-});
-loadCanModel({ textureIndex: 1 }).then((g) => {
-  can2 = g;
-  can2BaseRotation = { x: g.rotation.x, y: g.rotation.y };
-  scene.add(g);
+const loader = document.getElementById('loader');
+
+Promise.all([
+  loadCanModel({ textureIndex: 0 }),
+  loadCanModel({ textureIndex: 1 }),
+]).then(([g1, g2]) => {
+  can1 = g1;
+  can1BaseRotation = { x: g1.rotation.x, y: g1.rotation.y };
+  scene.add(g1);
+
+  can2 = g2;
+  can2BaseRotation = { x: g2.rotation.x, y: g2.rotation.y };
+  scene.add(g2);
+
+  if (loader) {
+    loader.classList.add('is-hidden');
+    loader.addEventListener('transitionend', () => loader.remove(), { once: true });
+  }
 });
 
 // Animation loop
